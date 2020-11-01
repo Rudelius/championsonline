@@ -1,0 +1,15 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo"
+      ><% if ( user ) { %> Welcome <%= user.name %> <% } %></a
+    >
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/guitars">Data</a></li>
+      <% if ( isAuthenticated ) { %>
+      <li><a href="/logout">Logout</a></li>
+      <% } %> <% if ( !isAuthenticated ) { %>
+      <li><a href="/login">Login</a></li>
+      <% } %>
+    </ul>
+  </div>
+</nav>
