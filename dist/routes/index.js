@@ -21,6 +21,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.register = void 0;
 const api = __importStar(require("./api"));
+const search = __importStar(require("./search"));
 exports.register = (app) => {
     const oidc = app.locals.oidc;
     // define a route handler for the default home page
@@ -42,6 +43,12 @@ exports.register = (app) => {
         const user = req.userContext ? req.userContext.userinfo : null;
         res.render("guitars", { isAuthenticated: req.isAuthenticated(), user });
     });
+    // define a secure route handler for the guitars page
+    app.get("/search", oidc.ensureAuthenticated(), (req, res) => {
+        const user = req.userContext ? req.userContext.userinfo : null;
+        res.render("search", { isAuthenticated: req.isAuthenticated(), user });
+    });
     api.register(app);
+    search.register(app);
 };
 //# sourceMappingURL=index.js.map

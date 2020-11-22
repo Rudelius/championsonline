@@ -17,13 +17,23 @@
   <body>
     <%- include('partials/nav.ejs', {user: user}) %>
     <div class="container">
-      <h1 class="header">Online beta</h1>
-      <a class="btn" href="/guitars"
-        ><i class="material-icons right">arrow_forward</i>Login!</a
-      >
-      <a class="btn" href="/search"
-        ><i class="material-icons right">arrow_forward</i>To search!</a
-      >
+      <div id="app">
+        <div class="row">
+          <h1 class="header">Hello world</h1>
+          <!-- Document bar -->
+          <div class="col s3">
+            <%- include('partials/doc-bar.ejs', {user: user}) %>
+          </div>
+
+          <!-- Main app -->
+          <div class="col s9, blue-text text-darken-2">
+            <p>hsi</p>
+            {{ message }}
+            {{ documents }}
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="js/search.js"></script>
   </body>
 </html>
